@@ -1,13 +1,9 @@
 const express = require("express")
-const { createTodo } = require("./types")
-const mongoose = require("mongoose")
+const { createTodo, updateTodo } = require("./types")
 const { Todo } = require("./db")
 const app = express()
 
 app.use(express.json())
-app.use("/", function (req, res) {
-    res.send("Hi there!")
-})
 
 app.post("/todo", async function (req, res) {
     const createPayload = req.body
