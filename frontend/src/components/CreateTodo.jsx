@@ -14,22 +14,24 @@ export function CreateTodo() {
             setDescription(e.target.value)
         }} /><br /><br />
 
-        <button onClick={
-            fetch('http://localhost:3000/todo', {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: title,
-                    description: description,
-                }),
-                headers: {
-                    "content-type": "application/json"
-                }
-            })
-                .then(async function (res) {
-                    const json = await res.json()
-                    console.log(json.todos)
-                    alert("Todo Added!")
+        <button
+                onClick={
+                fetch('http://localhost:3000/todo', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        title: title,
+                        description: description,
+                    }),
+                    // headers: {
+                    //     "content-type": "application/json"
+                    // }
                 })
-        } style={{ margin: 10, padding: 10 }} >Add a Todo!</button>
+                    .then(async function (res) {
+                        const json = await res.json()
+                        console.log(json.todos)
+                        alert("Todo Added!")
+                    })
+            }
+            style={{ margin: 10, padding: 10 }} >Add a Todo!</button>
     </div>
 }
